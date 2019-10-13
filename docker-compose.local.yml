@@ -3,3 +3,6 @@ services:
   api:
     ports:
       - '8181:8181'
+  app:
+    ports:
+      - '3000:3000'

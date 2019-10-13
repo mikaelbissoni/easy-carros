@@ -3,6 +3,9 @@ services:
   api:
     build: ./api
     env_file: ./api/.env.docker
+  app:
+    build: ./app
+    env_file: ./app/.env.docker
   proxy:
     build: ./proxy
     env_file: ./proxy/.env.docker

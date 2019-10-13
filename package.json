@@ -2,9 +2,9 @@
   "name": "app-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "clean": "rm -rf node_modules api/node_modules api/package-lock.json proxy/node_modules proxy/package-lock.json ",
-    "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cd api && npm run bootstrap) && (cd proxy && npm run bootstrap)",
-    "start:dev": "concurrently -n \"api,proxy\" \"cd api && npm run dev\" \"cd proxy && npm run dev\"",
+    "clean": "rm -rf node_modules api/node_modules api/package-lock.json rm -rf node_modules app/node_modules app/package-lock.json proxy/node_modules proxy/package-lock.json ",
+    "bootstrap": "npm install && (cp -n .env.dist .env || true) && (cd api && npm run bootstrap) && (cd app && npm run bootstrap) && (cd proxy && npm run bootstrap)",
+    "start:dev": "concurrently -n \"api,app,proxy\" \"cd api && npm run dev\" \"cd app && npm run dev\" \"cd proxy && npm run dev\"",
     "start:local": "docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build",
     "start": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d"
   },
