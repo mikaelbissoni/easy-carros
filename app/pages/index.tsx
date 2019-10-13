@@ -55,7 +55,6 @@ function Page() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  // these values are hardcoded since our main.go api only accepts this auth combo
   const initialValues: LoginInputs = { email: "", password: "" };
 
   const [inputs, setInputs] = useState(initialValues);

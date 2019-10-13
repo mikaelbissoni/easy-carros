@@ -1,10 +1,9 @@
 import React from "react";
 import { AuthProps, privateRoute } from "../components/private_route";
 import List from "../components/List";
-import Cookie from "js-cookie";
-import Router from "next/router";
-import { COOKIES } from "../services/login_service";
-import { get } from "../services/rest_service";
+import { authService } from "../services/rest_service";
+
+import VehicleToolbar from "../components/VehicleToolbar";
 
 type Props = AuthProps & {
   message: string;
@@ -12,27 +11,16 @@ type Props = AuthProps & {
 };
 
 function Page(props: Props) {
-  const logout = async () => {
-    Cookie.remove(COOKIES.authToken);
-    await Router.push("/");
-  };
-
   return (
     <>
+      <VehicleToolbar />
       <List items={props.vehicles} />
-      <button onClick={logout}>Logout</button>
     </>
   );
 }
 
 Page.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
-  const result: any = await get("/api/vehicle", {
-    method: "GET",
-    headers: {
-      Authorization: auth.authorizationString,
-      "Content-Type": "application/json"
-    }
-  });
+  const result: any = await authService.read('',`${auth.authorizationString}`);
 
   let message = "";
   if (result.error) {

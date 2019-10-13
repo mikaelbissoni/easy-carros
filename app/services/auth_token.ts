@@ -18,7 +18,7 @@ export class AuthToken {
     try {
       if (token) {
         this.decodedToken = jwtDecode(token);
-        this.authorizationString = `Bearer ${token}`;
+        this.authorizationString = `${process.env.secret} ${token}`;
         this.expiresAt = new Date(this.decodedToken.exp * 1000);
       }
     } catch (e) { }
