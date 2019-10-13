@@ -24,6 +24,8 @@ Configure os arquivos abaixo caso precise ajustar algum parâmetro específico:
 ```
 api/.env
 api/.env.docker
+app/.env
+app/.env.docker
 proxy/.env
 proxy/.env.docker
 ```
@@ -38,7 +40,7 @@ Inicia todos os serviços do docker.
 npm run start:local
 ```
 
-Access your app under `http://localhost:8080`
+Acesse seu app em `http://localhost:8080`
 
 ## Desenvolvimento
 
