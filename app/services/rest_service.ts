@@ -25,8 +25,7 @@ class AuthService {
 
   private getAuth(): string {
     const token = Cookie.get(COOKIES.authToken);
-    console.log('token: ', token);
-    return `${process.env.secret} ${token}`;
+    return `Bearer ${token}`;
   }
 
   public async loginPost(data: any) {
