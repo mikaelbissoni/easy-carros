@@ -20,7 +20,7 @@ function Page(props: Props) {
 }
 
 Page.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
-  const result: any = await authService.read('',`${auth.authorizationString}`);
+  const result: any = await authService.readAll();
 
   let message = "";
   if (result.error) {
