@@ -57,8 +57,8 @@ class AuthService {
     return result;
   }
 
-  public async read(id?: string, authToken?: string) {
-    const res = await fetch(this.baseURL(`/api/vehicle/${id}`), {
+  public async readAll(authToken?: string) {
+    const res = await fetch(this.baseURL(`/api/vehicle/`), {
       method: 'GET',
       headers: {
         Authorization: (authToken) ? authToken : this.getAuth(),
