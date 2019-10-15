@@ -135,9 +135,11 @@ const List: React.FunctionComponent<Props> = ({ items }) => {
           Veículos
         </Typography>
         <ListMaterial>
-          {vehicles.map(item => (
+          {(vehicles.length) ? vehicles.map(item => (
             <ListItem parentCallback={callback} data={item} key={item.id} />
-          ))}
+          )):(
+            <div>Nenhum veículo encontrado.</div>
+          )}
         </ListMaterial>
       </div>
     </Grid>

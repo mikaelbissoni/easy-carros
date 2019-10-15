@@ -4,10 +4,11 @@ import List from "../components/List";
 import { authService } from "../services/rest_service";
 
 import VehicleToolbar from "../components/VehicleToolbar";
+import { Vehicle } from "../interfaces";
 
 type Props = AuthProps & {
   message: string;
-  vehicles: [];
+  vehicles: Vehicle[];
 };
 
 function Page(props: Props) {
@@ -20,14 +21,18 @@ function Page(props: Props) {
 }
 
 Page.getInitialProps = async ({ auth }: AuthProps): Promise<Props> => {
-  const result: any = await authService.readAll();
+  const result: any = await authService.readAll(auth.authorizationString);
 
-  let message = "";
-  if (result.error) {
-    message = result.error.message;
+  let { data } = result;
+  let { error } = result;
+  let message = '';
+  let vehicles: Vehicle[] = [];
+  
+  if (data) {
+    vehicles = data;
+  } else {
+    message = error.message;
   }
-
-  const vehicles = result.data;
 
   return { message, auth, vehicles };
 };
